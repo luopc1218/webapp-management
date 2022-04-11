@@ -6,9 +6,7 @@ COPY ./package.json /app/package.json
 
 RUN yarn --production
 
-WORKDIR /app
-
-COPY . .
+COPY ./* /app/*
 
 RUN  yarn build
 
