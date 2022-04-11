@@ -1,10 +1,16 @@
 FROM node:lts as builder
 
-COPY . /app
+RUN mkdir /app
+
+COPY ./package.json /app/package.json
+
+RUN yarn --production
 
 WORKDIR /app
 
-RUN yarn && yarn build
+COPY . .
+
+RUN  yarn build
 
 FROM nginx:latest 
 
